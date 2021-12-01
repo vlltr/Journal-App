@@ -24,7 +24,7 @@
       <textarea placeholder="What's Happening?"></textarea>
   </div>
 
-  <Fab />
+  <Fab icon="fa-save" />
 
   <img 
     src="https://miro.medium.com/max/1400/1*mtGIfXRPG2FG_zbKJhwWzA.png" 
