@@ -5,25 +5,38 @@
             type="text"
             class="form-control"
             placeholder="Search"
+            v-model="term"
           >
       </div>
 
       <div class="entry-scroll-area">
-          <h2
-            v-for="item in 10"
-            :key="item"
-          >
-          <Entry />
-          </h2>
+          <Entry
+            v-for="entry in entryByTerm"
+            :key="entry.id"
+            :entry="entry"
+           />
       </div>
   </div>
 </template>
 
 <script>
 import { defineAsyncComponent } from 'vue'
+import { mapGetters } from 'vuex'
+
 export default {
     components: {
         Entry: defineAsyncComponent(() => import('./Entry.vue') ),
+    },
+    computed: {
+        ...mapGetters('journal', ['getEntriesByTerm']),
+        entryByTerm() {
+            return this.getEntriesByTerm( this.term )
+        }
+    },
+    data() {
+        return {
+            term: ''
+        }
     }
 }
 </script>
