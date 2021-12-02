@@ -1,3 +1,3 @@
-// export const myGetter = ({ commit }) => {
+// export const myGetter = ({ state }) => {
     //return state
 // }
