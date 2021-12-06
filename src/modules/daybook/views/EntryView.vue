@@ -1,5 +1,5 @@
 <template>
-<template v-if="entry">
+<div v-if="entry">
   <div class="entry-title d-flex justify-content-between p-2">
       <div>
           <span class="text-success fs-3 fw-bold">{{ getDayMonthYear.day }}</span>
@@ -29,8 +29,10 @@
     src="https://miro.medium.com/max/1400/1*mtGIfXRPG2FG_zbKJhwWzA.png" 
     alt="Image"
     class="img-thumbnail">
-</template>
-  <Fab icon="fa-save" />
+</div>
+  <Fab icon="fa-save"
+    @on:click="saveEntry"
+   />
 </template>
 
 <script>
@@ -69,6 +71,10 @@ export default {
             if( !entry ) return this.$router.push({ name: 'no-entry' })
 
             this.entry = entry
+        },
+        async saveEntry(){
+            console.log('xd')
+            console.log(this.entry)
         }
     },
     created(){
