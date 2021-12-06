@@ -1,4 +1,5 @@
 <template>
+<template v-if="entry">
   <div class="entry-title d-flex justify-content-between p-2">
       <div>
           <span class="text-success fs-3 fw-bold">{{ getDayMonthYear.day }}</span>
@@ -23,13 +24,13 @@
   <div class="d-flex flex-column px-3 h-75">
       <textarea placeholder="What's Happening?" v-model="entry.text"></textarea>
   </div>
-
-  <Fab icon="fa-save" />
-
+  
   <img 
     src="https://miro.medium.com/max/1400/1*mtGIfXRPG2FG_zbKJhwWzA.png" 
     alt="Image"
     class="img-thumbnail">
+</template>
+  <Fab icon="fa-save" />
 </template>
 
 <script>
@@ -65,7 +66,7 @@ export default {
         loadEntry(){
             const entry = this.getEntryById( this.id )
             //console.log(entry)
-            if( !entry ) this.$router.push({ name: 'no-entry' })
+            if( !entry ) return this.$router.push({ name: 'no-entry' })
 
             this.entry = entry
         }
@@ -73,7 +74,13 @@ export default {
     created(){
         // console.log(this.$route.params.id)
         this.loadEntry()
+    },
+    watch: {
+        id() {
+            this.loadEntry()
+        }
     }
+
 
 }
 </script>
