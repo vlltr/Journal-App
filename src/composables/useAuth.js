@@ -7,7 +7,7 @@ const useAuth = () => {
         const response = await store.dispatch('auth/createUser', user)
         
         return response
-        // console.log('test',user)
+       
 
     }
 
