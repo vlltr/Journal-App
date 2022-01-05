@@ -5,14 +5,23 @@ const useAuth = () => {
 
     const createUser = async (user) => {
         const response = await store.dispatch('auth/createUser', user)
-        
         return response
-       
+    }
 
+    const loginUser = async (user) => {
+        const response = await store.dispatch('auth/signInUser', user)
+        return response
+    }
+
+    const checkAuthStatus = async () => {
+        const response = await store.dispatch('auth/checkAuthToken')
+        return response
     }
 
     return {
-        createUser
+        checkAuthStatus,
+        createUser,
+        loginUser,
     }
 }
 
