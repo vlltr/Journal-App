@@ -5,7 +5,7 @@
                 alt="Logo"
                 height="24"
                 class="d-inline-block align-text-top mx-2">
-            Daybook
+            {{username}}
         </a>
 
         <div class="d-flex">
@@ -28,8 +28,8 @@ export default {
         return {
             username,
             onLogout: () =>{
-                router.push({name: 'login'})
                 logout()
+                router.push({name: 'login'})
             }
         }
     },
